@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>tl2_tp10_2023_josepro752</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <None Update="DataBase\kanban.db">
+        <CopyToOutDirectory>Always</CopyToOutDirectory>
+      </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+</Project>
