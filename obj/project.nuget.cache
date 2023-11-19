@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o65Adzp1r3OdpKTbGk+QomMo2ei24Aesk0oWwRPUwPbyCn8lhNFuK2FuYYiGh2Zv4orPhlRv9u+plr50pPvyOQ==",
+  "dgSpecHash": "1NyWjZJyYANI7AHMak/4PGWTmzhAWysTvIQVtShYeDGHaoj6DF/s+9hgL7OMRcXjOhr6bBxxHsQFqocoqwcDUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
+  "projectFilePath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josei\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\josei\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

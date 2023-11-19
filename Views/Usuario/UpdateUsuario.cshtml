@@ -1,0 +1,19 @@
+@model Usuario
+
+@{
+    ViewData["Title"] = "Modificar usuario";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Modificar</h1>
+    <form asp-controller="Usuario" asp-action="UpdateUsuario" method="post">
+        <fieldset>
+            <div class="form-floating mb-3">
+                <input type="text" asp-for="@Model.NombreDeUsuario" class="form-control" id="floatingInput">
+                <input asp-for="@Model.Id" hidden disabled>
+                <label for="floatingInput">Nombre</label>
+            </div>
+            <button type="submit" class = "btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Modificar</button>
+        </fieldset>
+    </form>
+</div>

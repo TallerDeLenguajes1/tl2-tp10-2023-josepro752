@@ -1,0 +1,61 @@
+﻿@model List<Tablero>
+
+@{
+    ViewData["Title"] = "Lista de Tableros";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Id Usuario Propietario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var t in Model) {
+            <tr>
+                <th scope="row">@t.Id</th>
+                <td>@t.IdUsuarioPropietario</td>
+                <td>@t.Nombre</td>
+                <td>@t.Descripcion</td>
+                <td><a class = "btn btn-outline-primary" asp-controller="Tablero" asp-action="UpdateTablero" asp-route-id="@t.Id"><i class="bi bi-pencil-square"></i></a></td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@t.Id">
+                        <i class="bi bi-trash"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal-@t.Id" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Tablero</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Estás seguro de querer borrar @t.Nombre?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <a class = "btn btn-outline-danger" asp-controller="Tablero" asp-action="DeleteTablero" asp-route-id="@t.Id">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-success" asp-controller="Tablero" asp-action="AddTablero"><i class="bi bi-plus-circle"></i> Crear Tablero</a>
+</div>

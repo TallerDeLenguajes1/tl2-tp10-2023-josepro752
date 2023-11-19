@@ -1,0 +1,46 @@
+@model Tarea
+
+@{
+    ViewData["Title"] = "Crear tarea";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Crear Tarea</h1>
+    <form asp-controller="Tarea" asp-action="AddTarea" method="post">
+        <fieldset>
+            <div class="form-floating mb-3">
+                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput">
+                <label for="floatingInput">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput">
+                <label for="floatingInput">Descripcion</label>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Color">Color</label>
+                <input type="color" name="color" class="form-control" id="color" onchange="GuardarColor()">
+                <input type="text" name="color" class="form-control" id="stringColor" hidden>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Estado">Estado: </label>
+                <select class="form-select" asp-for="@Model.Estado">
+                    <option value="0" selected>Ideas</option>
+                    <option value="1">ToDo</option>
+                    <option value="2">Doing</option>
+                    <option value="3">Review</option>
+                    <option value="4">Done</option>
+                </select>
+            </div>
+            <input asp-for="@Model.IdTablero" hidden disabled value="1">
+            <input asp-for="@Model.IdUsuarioAsignado" hidden disabled value="1">
+            <button type="submit" class = "btn btn-outline-success"><i class="bi bi-plus-circle"></i> Crear Tarea</button>
+        </fieldset>
+    </form>
+</div>
+<script>
+    function GuardarColor() {
+        var color = document.getElementById("color");
+        var stringColor = document.getElementById("stringColor");
+        stringColor.value = color.value;
+    }
+</script>

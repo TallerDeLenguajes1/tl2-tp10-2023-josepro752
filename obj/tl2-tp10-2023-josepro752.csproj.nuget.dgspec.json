@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj": {}
+    "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj": {
+    "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
+        "projectUniqueName": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
         "projectName": "tl2-tp10-2023-josepro752",
-        "projectPath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
+        "projectPath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\tl2-tp10-2023-josepro752.csproj",
         "packagesPath": "C:\\Users\\josei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\obj\\",
+        "outputPath": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10 AGAIN\\tl2-tp10-2023-josepro752\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josei\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,7 +20,7 @@
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.310\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.311\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.311\\RuntimeIdentifierGraph.json"
         }
       }
     }
