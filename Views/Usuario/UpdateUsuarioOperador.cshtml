@@ -1,12 +1,12 @@
 @model Usuario
 
 @{
-    ViewData["Title"] = "Crear usuario";
+    ViewData["Title"] = "Modificar usuario";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Crear Usuario</h1>
-    <form class="m-auto w-50" asp-controller="Usuario" asp-action="AddUsuario" method="post">
+    <h1 class="display-4">Modificar</h1>
+    <form class="m-auto w-50" asp-controller="Usuario" asp-action="UpdateUsuario" method="post">
         <fieldset>
             <div class="form-floating mb-3">
                 <input type="text" asp-for="@Model.NombreDeUsuario" class="form-control" id="floatingInput">
@@ -18,12 +18,12 @@
             </div>
             <div class="mb-3">
                 <label class="form-label text-center" asp-for="@Model.Rol">Rol</label>
-                <select class="form-select" asp-for="@Model.Rol">
+                <select class="form-select" asp-for="@Model.Rol" disabled>
                     <option value="Administrador">Administrador</option>
                     <option value="Operador" selected>Operador</option>
                 </select>
             </div>
-            <button type="submit" class = "btn btn-outline-success"><i class="bi bi-person-plus"></i> Crear Usuario</button>
+            <button type="submit" class = "btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Modificar</button>
         </fieldset>
     </form>
 </div>
