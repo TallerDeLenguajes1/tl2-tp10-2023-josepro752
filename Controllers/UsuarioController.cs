@@ -20,7 +20,7 @@ public class UsuarioController : Controller
     {
         if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
         if (isAdmin()) {
-            var usuarios = usuarioRepository.GetAllUsuarios();
+            List<Usuario> usuarios = usuarioRepository.GetAllUsuarios();
             return View(usuarios);
         } else {
             List<Usuario> usuario = usuarioRepository.GetAllUsuarios().FindAll(u => u.Id == HttpContext.Session.GetInt32("Id"));
@@ -49,11 +49,11 @@ public class UsuarioController : Controller
     public IActionResult UpdateUsuario(int id) {
         if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
         if (isAdmin()) {
-            var usuario = usuarioRepository.GetUsuario(id);
+            Usuario usuario = usuarioRepository.GetUsuario(id);
             return View(usuario);
         } else {
             if (HttpContext.Session.GetInt32("Id") == id) {
-                var usuario = usuarioRepository.GetUsuario(id);
+                Usuario usuario = usuarioRepository.GetUsuario(id);
                 return View("UpdateUsuarioOperador",usuario);
             } else {
                 return RedirectToAction("Index");
