@@ -24,11 +24,11 @@ public class TareaController : Controller
     {
         if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
         if (isAdmin()) {
-            ViewTareas tareas = new ViewTareas(tareaRepository.GetAllTareas(),usuarioRepository.GetAllUsuarios(),tableroRepository.GetAllTableros());
+            ViewListarTareas tareas = new ViewListarTareas(tareaRepository.GetAllTareas(),usuarioRepository.GetAllUsuarios(),tableroRepository.GetAllTableros());
             return View(tareas);
         } else {
-            ViewTareas tareas = new ViewTareas(tareaRepository.GetAllTareas().FindAll(t => t.Id == HttpContext.Session.GetInt32("Id")),usuarioRepository.GetAllUsuarios(),tableroRepository.GetAllTableros());
-            return View(tareas);
+            ViewListarTareas tareas = new ViewListarTareas(tareaRepository.GetAllTareas().FindAll(t => t.Id == HttpContext.Session.GetInt32("Id")),usuarioRepository.GetAllUsuarios(),tableroRepository.GetAllTableros());
+            return View("TareaOperador",tareas);
         }
     }
 
@@ -58,7 +58,7 @@ public class TareaController : Controller
         } else {
             if (HttpContext.Session.GetInt32("Id") == id) {
                 Tarea tarea = tareaRepository.GetTarea(id);
-                return View("UpdateUsuarioOperador",tarea);
+                return View("UpdateTareaOperador",tarea);
             } else {
                 return RedirectToAction("Index");
             }
@@ -84,7 +84,7 @@ public class TareaController : Controller
             tareaRepository.DeleteTarea(id);
         } else {
             if (HttpContext.Session.GetInt32("Id") == id) {
-                tareaRepository.DeleteTarea(id);;
+                tareaRepository.DeleteTarea(id);    
             }
         }
         return RedirectToAction("Index");

@@ -1,0 +1,24 @@
+@model Tablero
+
+@{
+    ViewData["Title"] = "Modificar tablero";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Modificar</h1>
+    <form asp-controller="Tablero" asp-action="UpdateTablero" method="post" class="w-50 m-auto">
+        <fieldset>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.Id" hidden disabled>
+                <input asp-for="@Model.IdUsuarioPropietario" hidden disabled>
+                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput">
+                <label for="floatingInput">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput">
+                <label for="floatingInput">Descripcion</label>
+            </div>
+            <button type="submit" class = "btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Modificar</button>
+        </fieldset>
+    </form>
+</div>

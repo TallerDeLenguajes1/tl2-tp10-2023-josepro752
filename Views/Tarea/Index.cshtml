@@ -1,4 +1,4 @@
-﻿@model List<Tarea>
+﻿@model ViewListarTareas
 
 @{
     ViewData["Title"] = "Lista de Tareas";
@@ -21,15 +21,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var t in Model) {
+            @foreach(var t in Model.VTareas) {
             <tr>
                 <th scope="row">@t.Id</th>
-                <td>@t.IdTablero</td>
+                <td>@t.NombreTablero</td>
                 <td>@t.Nombre</td>
                 <td>@t.Descripcion</td>
                 <td><input type="color" value="@t.Color" disabled></td>
                 <td>@t.Estado</td>
-                <td>@t.IdUsuarioAsignado</td>
+                <td>@t.UsuarioAsignado</td>
                 <td><a class = "btn btn-outline-primary" asp-controller="Tarea" asp-action="UpdateTarea" asp-route-id="@t.Id"><i class="bi bi-pencil-square"></i></a></td>
                 <td>
                     <!-- Button trigger modal -->

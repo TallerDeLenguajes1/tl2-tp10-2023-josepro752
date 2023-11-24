@@ -1,0 +1,38 @@
+﻿@model ViewListarTareas
+
+@{
+    ViewData["Title"] = "Lista de Tareas";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tareas</h1>
+    <table class="table table-striped caption-top table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Id</th>
+                <th scope="col" class="col-2">Id Tablero</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Color</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="col-2">Id Usuario Asignado</th>
+                <th scope="col">Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var t in Model.VTareas) {
+            <tr>
+                <th scope="row">@t.Id</th>
+                <td>@t.NombreTablero</td>
+                <td>@t.Nombre</td>
+                <td>@t.Descripcion</td>
+                <td><input type="color" value="@t.Color" disabled></td>
+                <td>@t.Estado</td>
+                <td>@t.UsuarioAsignado</td>
+                <td><a class = "btn btn-outline-primary" asp-controller="Tarea" asp-action="UpdateTarea" asp-route-id="@t.Id"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-success" asp-controller="Tarea" asp-action="AddTarea"><i class="bi bi-plus-circle"></i> Crear Tarea</a>
+</div>

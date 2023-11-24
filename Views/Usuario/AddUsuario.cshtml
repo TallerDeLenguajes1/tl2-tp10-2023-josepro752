@@ -1,4 +1,4 @@
-@model Usuario
+@model ViewUsuarioAdd
 
 @{
     ViewData["Title"] = "Crear usuario";
@@ -13,7 +13,7 @@
                 <label asp-for="@Model.NombreDeUsuario">Nombre</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" asp-for="@Model.Contrasenia" class="form-control" id="floatingInput">
+                <input type="password" asp-for="@Model.Contrasenia" class="form-control" id="floatingInput">
                 <label asp-for="@Model.Contrasenia">Contraseña</label>
             </div>
             <div class="mb-3">

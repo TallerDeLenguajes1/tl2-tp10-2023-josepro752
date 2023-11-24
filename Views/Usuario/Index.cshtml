@@ -1,4 +1,4 @@
-﻿@model List<Usuario>
+﻿@model ViewUsuarioListar
 
 @{
     ViewData["Title"] = "Lista de Usuarios";
@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var u in Model) {
+            @foreach(var u in Model.ViewUsuarios) {
             <tr>
                 <th scope="row">@u.Id</th>
                 <td>@u.NombreDeUsuario</td>
