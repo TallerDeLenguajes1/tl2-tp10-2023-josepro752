@@ -1,4 +1,4 @@
-@model Tablero
+@model ViewTableroUpdate
 
 @{
     ViewData["Title"] = "Modificar tablero";
@@ -10,7 +10,7 @@
         <fieldset>
             <div class="form-floating mb-3">
                 <input asp-for="@Model.Id" hidden disabled>
-                <input asp-for="@Model.IdUsuarioPropietario" hidden disabled>
+                <input asp-for="@Model.UsuarioPropietario" hidden disabled>
                 <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput">
                 <label for="floatingInput">Nombre</label>
             </div>

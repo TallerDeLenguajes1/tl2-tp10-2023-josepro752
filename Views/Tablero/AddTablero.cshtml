@@ -1,4 +1,4 @@
-@model Tablero
+@model ViewTableroAdd
 
 @{
     ViewData["Title"] = "Crear tablero";
@@ -17,7 +17,7 @@
                 <label for="floatingInput">Descripcion</label>
             </div>
             <input asp-for="@Model.Id" hidden disabled value="1">
-            <input asp-for="@Model.IdUsuarioPropietario" hidden disabled value="1">
+            <input asp-for="@Model.UsuarioPropietario" hidden disabled value="1">
             <button type="submit" class = "btn btn-outline-success"><i class="bi bi-plus-circle"></i> Crear Tablero</button>
         </fieldset>
     </form>

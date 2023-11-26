@@ -9,9 +9,7 @@ public class Usuario {
     public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
     public string Contrasenia { get => contrasenia; set => contrasenia = value; }
     public string Rol { get => rol; set => rol = value; }
-    public Usuario() {
-
-    }
+    public Usuario() {}
     public Usuario(ViewUsuarioAdd viewUsuarioAdd) {
         id = viewUsuarioAdd.Id;
         nombreDeUsuario = viewUsuarioAdd.NombreDeUsuario;

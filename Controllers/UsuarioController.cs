@@ -70,6 +70,7 @@ public class UsuarioController : Controller
             usuarioRepository.UpdateUsuario(id,usuario);
         } else {
             if (HttpContext.Session.GetInt32("Id") == id) {
+                viewUsuarioUpdate.Rol = "Operador"; //triquiñuela porque me llega el rol en null
                 var usuario = new Usuario(viewUsuarioUpdate);
                 usuarioRepository.UpdateUsuario(id,usuario);
             }

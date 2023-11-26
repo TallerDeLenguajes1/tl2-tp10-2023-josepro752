@@ -16,7 +16,5 @@ public class ViewUsuarioUpdate {
         contrasenia = usuario.Contrasenia;
         rol = usuario.Rol;
     }
-    public ViewUsuarioUpdate() {
-        
-    }
+    public ViewUsuarioUpdate() {}
 }

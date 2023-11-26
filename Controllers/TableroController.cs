@@ -8,36 +8,39 @@ public class TableroController : Controller
 {
     private readonly ILogger<TableroController> _logger;
     private ITableroRepository tableroRepository;
+    private IUsuarioRepository usuarioRepository;
 
     public TableroController(ILogger<TableroController> logger)
     {
         _logger = logger;
         tableroRepository = new TableroRepository();
+        usuarioRepository = new UsuarioRepository();
     }
 
     public IActionResult Index()
     {
         if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
         if (isAdmin()) {
-            List<Tablero> tableros = tableroRepository.GetAllTableros();
+            ViewTableroListar tableros = new ViewTableroListar(tableroRepository.GetAllTableros(),usuarioRepository.GetAllUsuarios());
             return View(tableros);
         } else {
-            List<Tablero> tableros = tableroRepository.GetAllTableros().FindAll(t => t.Id == HttpContext.Session.GetInt32("Id"));            
-            return View("TableroOperador",tableros);
+            ViewTableroListar tableros = new ViewTableroListar(tableroRepository.GetAllTableros().FindAll(t => t.Id == HttpContext.Session.GetInt32("Id")),usuarioRepository.GetAllUsuarios());
+            return View(tableros);
         }
     }
 
     [HttpGet]
     public IActionResult AddTablero() {
         if (isAdmin()) {
-            return View(new Tablero ());
+            return View(new ViewTableroAdd (usuarioRepository.GetAllUsuarios()));
         }
         return RedirectToRoute(new {controller = "Login", action = "Index"});
     }
 
     [HttpPost]
-    public IActionResult AddTablero(Tablero tablero) {
+    public IActionResult AddTablero(ViewTableroAdd viewTableroAdd) {
         if (isAdmin()) {
+            var tablero =  new Tablero(viewTableroAdd);
             tableroRepository.AddTablero(tablero);
             return RedirectToAction("Index");
         }
@@ -48,6 +51,7 @@ public class TableroController : Controller
     public IActionResult UpdateTablero(int id) {
         if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
         if (isAdmin()) {
+            ViewUsuarioUpdate viewUsuarioUpdate = new ViewUsuarioUpdate(tableroRepository.GetTablero(id));
             Tablero tablero = tableroRepository.GetTablero(id);
             return View(tablero);
         } else {
