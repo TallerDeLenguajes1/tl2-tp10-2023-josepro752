@@ -1,7 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 namespace tl2_tp10_2023_josepro752.Models;
 
 public class ViewTablero { //Quito una capa de abstraccion
-
     public int Id {get;set;}
     public string UsuarioPropietario {get;set;}
     public string Nombre {get;set;}

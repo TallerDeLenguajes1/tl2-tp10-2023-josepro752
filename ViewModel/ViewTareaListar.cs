@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 namespace tl2_tp10_2023_josepro752.Models;
 
 public class ViewTareaListar {

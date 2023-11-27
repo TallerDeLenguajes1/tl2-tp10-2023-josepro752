@@ -1,9 +1,16 @@
+using System.ComponentModel.DataAnnotations;
 namespace tl2_tp10_2023_josepro752.Models;
 
 public class ViewUsuarioAdd {
     private int id;
+    [Required (ErrorMessage ="este campo es requerido")]
+    [StringLength(100)]
     private string nombreDeUsuario;
+    [Required (ErrorMessage ="este campo es requerido")]
+    [StringLength(50)]
     private string contrasenia;
+    [Required (ErrorMessage ="este campo es requerido")]
+    [StringLength(20)]
     private string rol;
     public int Id { get => id; set => id = value; }
     public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
