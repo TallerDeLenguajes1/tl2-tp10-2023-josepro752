@@ -8,6 +8,7 @@ public class ViewTableroListar {
 
     public ViewTableroListar(List<Tablero> tableros, List<Usuario> usuarios)
     {
+        viewTableros = new List<ViewTablero>();
         foreach (var t in tableros) {
             foreach (var u in usuarios) {
                 if (t.IdUsuarioPropietario == u.Id) {

@@ -9,7 +9,7 @@ public class ViewTablero { //Quito una capa de abstraccion
     public ViewTablero(Tablero tablero, Usuario usuario)
     {
         Id = tablero.Id;
-        UsuarioPropietario = tablero.Nombre;
+        UsuarioPropietario = usuario.NombreDeUsuario;
         Nombre = tablero.Nombre;
         Descripcion = tablero.Descripcion;
     }

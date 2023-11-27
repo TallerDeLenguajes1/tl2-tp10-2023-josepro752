@@ -16,7 +16,7 @@ public class Tablero {
         nombre = viewTableroAdd.Nombre;
         descripcion = viewTableroAdd.Descripcion;
     }
-    public Tablero(ViewTableroUpdate viewTableroUpdate, Usuario u) {
+    public Tablero(ViewTableroUpdate viewTableroUpdate) {
         id = viewTableroUpdate.Id;
         idUsuarioPropietario = viewTableroUpdate.IdUsuarioPropietario;
         nombre = viewTableroUpdate.Nombre;

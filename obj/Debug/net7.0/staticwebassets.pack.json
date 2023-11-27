@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\img\\logokanban.jpeg",
+      "PackagePath": "staticwebassets\\img\\logokanban.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\img\\me.jpg",
+      "PackagePath": "staticwebassets\\img\\me.jpg"
+    },
+    {
       "Id": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

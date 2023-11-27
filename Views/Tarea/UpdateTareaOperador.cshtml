@@ -1,4 +1,4 @@
-@model Tarea
+@model ViewTareaUpdate
 
 @{
     ViewData["Title"] = "Modificar tarea";
@@ -9,14 +9,14 @@
     <form asp-controller="Tarea" asp-action="UpdateTarea" method="post" class="w-50 m-auto">
         <fieldset>
             <div class="form-floating mb-3">
-                <input asp-for="@Model.Id" hidden disabled>
-                <input asp-for="@Model.IdTablero" hidden disabled>
-                <input asp-for="@Model.IdUsuarioAsignado" hidden disabled>
-                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput" disabled>
+                <input asp-for="@Model.Id" hidden>
+                <input asp-for="@Model.IdTablero" hidden>
+                <input asp-for="@Model.IdUsuarioAsignado" hidden>
+                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput" readonly>
                 <label for="floatingInput">Nombre</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput" disabled>
+                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput" readonly>
                 <label for="floatingInput">Descripcion</label>
             </div>
             <div class="mb-3">

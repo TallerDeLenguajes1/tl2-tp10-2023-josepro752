@@ -7,7 +7,7 @@
 <div class="text-center d-flex flex-column align-items-center">
     <h1 class="text-primary">Modificar Usuario</h1>
     <form class="w-50 my-2 p-4 border border-3 border-primary rounded-2 border-opacity-25" asp-controller="Usuario"
-        asp-action="ModificarUsuario">
+        asp-action="UpdateUsuario">
         <legend>@Model.Id - @Model.NombreDeUsuario</legend>
         <fieldset>
             <input hidden asp-for="@Model.Id">

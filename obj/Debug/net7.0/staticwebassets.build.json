@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UUE9xr0vC798ZDMlp94+zZ5JU1S7uQFJFKvih5jQiYA=",
+  "Hash": "Q0i7sQY5ZRXDBBkA+CPFV0u+ZLY7vouX3vb2URUsvR4=",
   "Source": "tl2-tp10-2023-josepro752",
   "BasePath": "_content/tl2-tp10-2023-josepro752",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\img\\logokanban.jpeg",
+      "SourceId": "tl2-tp10-2023-josepro752",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\",
+      "BasePath": "_content/tl2-tp10-2023-josepro752",
+      "RelativePath": "img/logokanban.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logokanban.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\img\\me.jpg",
+      "SourceId": "tl2-tp10-2023-josepro752",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\",
+      "BasePath": "_content/tl2-tp10-2023-josepro752",
+      "RelativePath": "img/me.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\me.jpg"
     },
     {
       "Identity": "C:\\Users\\josei\\OneDrive\\Escritorio\\FACULTAD\\Taller de Lenguajes 2\\PRACTICA\\TP10\\tl2-tp10-2023-josepro752\\wwwroot\\js\\site.js",

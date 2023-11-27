@@ -20,7 +20,7 @@ public class TareaRepository : ITareaRepository{
         }
     }
     public void UpdateTarea(int id, Tarea tarea) {
-        var query = @"UPDATE Tarea SET id_tablero = @id_tablero, nombre = @nombre, estado = @estado, descripcion = @descripcion, color = @color WHERE id=@id;"; // Esto se ejecutara en la base de datos
+        var query = @"UPDATE Tarea SET id_tablero = @id_tablero, nombre = @nombre, estado = @estado, descripcion = @descripcion, color = @color, id_usuario_asignado = @id_usuario_asignado WHERE id=@id;"; // Esto se ejecutara en la base de datos
         using (SQLiteConnection connection = new SQLiteConnection(cadenaDeConexion)){ // Me crea la conexion
             var command = new SQLiteCommand(query,connection); // Crea el comando que se ejecutara en la base de datos
             command.Parameters.Add(new SQLiteParameter("@id_tablero",tarea.IdTablero));
@@ -29,7 +29,7 @@ public class TareaRepository : ITareaRepository{
             command.Parameters.Add(new SQLiteParameter("@descripcion",tarea.Descripcion));
             command.Parameters.Add(new SQLiteParameter("@color",tarea.Color));
             command.Parameters.Add(new SQLiteParameter("@id",tarea.Id));
-            // command.Parameters.Add(new SQLiteParameter("@id_usuario_asignado",tarea.IdUsuarioAsignado));
+            command.Parameters.Add(new SQLiteParameter("@id_usuario_asignado",tarea.IdUsuarioAsignado));
             connection.Open();
             command.ExecuteNonQuery(); // Se usa ExecuteNonQuery, cuando es una modificacion (ALTA, BAJA, ACTUALIZACION)
             connection.Close();

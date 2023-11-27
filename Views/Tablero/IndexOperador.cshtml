@@ -1,0 +1,32 @@
+﻿@model ViewTableroListar
+
+@{
+    ViewData["Title"] = "Lista de Tableros";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tableros</h1>
+    <table class="table table-striped caption-top table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Id</th>
+                <th scope="col">Usuario Propietario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var t in Model.ViewTableros) {
+            <tr>
+                <th scope="row">@t.Id</th>
+                <td>@t.UsuarioPropietario</td>
+                <td>@t.Nombre</td>
+                <td>@t.Descripcion</td>
+                <td><a class = "btn btn-outline-primary" asp-controller="Tablero" asp-action="UpdateTablero" asp-route-id="@t.Id"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-success" asp-controller="Tablero" asp-action="AddTablero"><i class="bi bi-plus-circle"></i> Crear Tablero</a>
+</div>

@@ -23,4 +23,23 @@ public class Tarea {
     public string Color { get => color; set => color = value; }
     public EstadoTarea Estado { get => estado; set => estado = value; }
     public int IdUsuarioAsignado { get => idUsuarioAsignado; set => idUsuarioAsignado = value; }
+    public Tarea () {}
+    public Tarea (ViewTareaAdd viewTareaAdd) {
+        id = viewTareaAdd.Id;
+        idTablero = viewTareaAdd.IdTablero;
+        nombre = viewTareaAdd.Nombre;
+        descripcion = viewTareaAdd.Descripcion;
+        color = viewTareaAdd.Color;
+        estado = viewTareaAdd.Estado;
+        idUsuarioAsignado = viewTareaAdd.IdUsuarioAsignado;
+    }
+    public Tarea (ViewTareaUpdate viewTareaUpdate) {
+        id = viewTareaUpdate.Id;
+        idTablero = viewTareaUpdate.IdTablero;
+        nombre = viewTareaUpdate.Nombre;
+        descripcion = viewTareaUpdate.Descripcion;
+        color = viewTareaUpdate.Color;
+        estado = viewTareaUpdate.Estado;
+        idUsuarioAsignado = viewTareaUpdate.IdUsuarioAsignado;
+    }
 }

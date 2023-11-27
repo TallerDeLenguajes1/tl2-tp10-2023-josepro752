@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tablero/IndexOperador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xJbmRleE9wZXJhZG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tablero/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,12 +72,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tarea/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcUHJpdmFjeS5jc2h0bWw=
+[C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tarea/IndexOperador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcSW5kZXhPcGVyYWRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tarea/TareaOperador.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcVGFyZWFPcGVyYWRvci5jc2h0bWw=
+[C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tarea/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/josei/OneDrive/Escritorio/FACULTAD/Taller de Lenguajes 2/PRACTICA/TP10/tl2-tp10-2023-josepro752/Views/Tarea/UpdateTarea.cshtml]

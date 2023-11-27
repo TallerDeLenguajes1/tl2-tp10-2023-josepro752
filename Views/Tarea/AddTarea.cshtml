@@ -1,4 +1,4 @@
-@model Tarea
+@model ViewTareaAdd
 
 @{
     ViewData["Title"] = "Crear tarea";
@@ -6,14 +6,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Crear Tarea</h1>
-    <form asp-controller="Tarea" asp-action="AddTarea" method="post">
+    <form class="m-auto w-50" asp-controller="Tarea" asp-action="AddTarea" method="post">
         <fieldset>
             <div class="form-floating mb-3">
-                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput">
+                <input type="text" asp-for="@Model.Nombre" class="form-control" id="floatingInput" required>
                 <label for="floatingInput">Nombre</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput">
+                <input type="text" asp-for="@Model.Descripcion" class="form-control" id="floatingInput" required>
                 <label for="floatingInput">Descripcion</label>
             </div>
             <div class="mb-3">

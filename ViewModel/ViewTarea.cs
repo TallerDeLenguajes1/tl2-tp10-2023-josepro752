@@ -1,6 +1,6 @@
 namespace tl2_tp10_2023_josepro752.Models;
 
-public class ViewListarTarea {
+public class ViewTarea {
     private int id;
     private string nombreTablero;
     private string nombre;
@@ -15,7 +15,7 @@ public class ViewListarTarea {
     public string Color { get => color; set => color = value; }
     public EstadoTarea Estado { get => estado; set => estado = value; }
     public string UsuarioAsignado { get => usuarioAsignado; set => usuarioAsignado = value; }
-    public ViewListarTarea(Tarea tarea, Usuario usuario, Tablero tablero) {
+    public ViewTarea(Tarea tarea, Usuario usuario, Tablero tablero) {
         this.id = tarea.Id;
         if (tablero == null) {
             this.nombreTablero = "Sin Tablero";
@@ -30,19 +30,6 @@ public class ViewListarTarea {
             this.usuarioAsignado = "Sin Asignar";
         } else {
             this.usuarioAsignado = usuario.NombreDeUsuario;
-        }
-    }
-}
-
-public class ViewListarTareas {
-    private List<ViewListarTarea> vTareas;
-    public List<ViewListarTarea> VTareas { get => vTareas; set => vTareas = value; }
-    public ViewListarTareas(List<Tarea> tareas, List<Usuario> usuarios, List<Tablero> tableros) {
-        vTareas = new List<ViewListarTarea>();
-        foreach (var tarea in tareas) {
-            var usuario = usuarios.FirstOrDefault(u => u.Id == tarea.IdUsuarioAsignado);
-            var tablero = tableros.FirstOrDefault(t => t.Id == tarea.IdTablero);
-            vTareas.Add(new ViewListarTarea(tarea,usuario,tablero));
         }
     }
 }
