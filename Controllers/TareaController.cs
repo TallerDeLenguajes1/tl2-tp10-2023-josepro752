@@ -69,18 +69,21 @@ public class TareaController : Controller
 
     [HttpPost]
     public IActionResult UpdateTarea(int id, ViewTareaUpdate viewTareaUpdate) {
-        if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-        if (isAdmin()) {
-            Tarea tarea = new Tarea(viewTareaUpdate);
-            tareaRepository.UpdateTarea(id,tarea);
-        } else {
-            var tarea = tareaRepository.GetTarea(id);
-            if (HttpContext.Session.GetInt32("Id") == tarea.IdUsuarioAsignado) {
-                tarea = new Tarea(viewTareaUpdate);
+        if (ModelState.IsValid) {
+            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+            if (isAdmin()) {
+                Tarea tarea = new Tarea(viewTareaUpdate);
                 tareaRepository.UpdateTarea(id,tarea);
+            } else {
+                var tarea = tareaRepository.GetTarea(id);
+                if (HttpContext.Session.GetInt32("Id") == tarea.IdUsuarioAsignado) {
+                    tarea = new Tarea(viewTareaUpdate);
+                    tareaRepository.UpdateTarea(id,tarea);
+                }
             }
+            return RedirectToAction("Index");
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("UpdateTarea");
     }
 
     public IActionResult DeleteTarea(int id) {

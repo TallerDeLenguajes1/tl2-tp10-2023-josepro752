@@ -18,13 +18,15 @@ public class LoginController : Controller
     {
         return View(new UsuarioLogin());
     }
-
     public IActionResult Login(UsuarioLogin usuarioLogin)
     {
-        var usuario = usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
-        if (usuario == null) return RedirectToAction("Index");
-        LogearUsuario(usuario);
-        return RedirectToRoute(new {controller="Home", action="Index"});
+        if (ModelState.IsValid) {
+            var usuario = usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
+            if (usuario == null) return RedirectToAction("Index");
+            LogearUsuario(usuario);
+            return RedirectToRoute(new {controller="Home", action="Index"});
+        }
+        return RedirectToAction("Index");
     }
 
     private void LogearUsuario(Usuario usuario) {

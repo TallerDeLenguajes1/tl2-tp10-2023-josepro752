@@ -39,12 +39,15 @@ public class TableroController : Controller
 
     [HttpPost]
     public IActionResult AddTablero(ViewTableroAdd viewTableroAdd) {
-        if (isAdmin()) {
-            var tablero =  new Tablero(viewTableroAdd);
-            tableroRepository.AddTablero(tablero);
-            return RedirectToAction("Index");
+        if (ModelState.IsValid) {
+            if (isAdmin()) {
+                var tablero =  new Tablero(viewTableroAdd);
+                tableroRepository.AddTablero(tablero);
+                return RedirectToAction("Index");
+            }
+            return RedirectToRoute(new {controller = "Login", action = "Index"});
         }
-        return RedirectToRoute(new {controller = "Login", action = "Index"});
+        return RedirectToAction("AddTablero");
     }
 
     [HttpGet]
@@ -67,20 +70,23 @@ public class TableroController : Controller
 
     [HttpPost]
     public IActionResult UpdateTablero(int id, ViewTableroUpdate viewTableroUpdate) {
-        var t = tableroRepository.GetTablero(id);
-        if (t != null) {
-            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-            if (isAdmin()) {
-                Tablero tablero = new Tablero(viewTableroUpdate);
-                tableroRepository.UpdateTablero(id,tablero);
-            } else {
-                if (HttpContext.Session.GetInt32("Id") == t.IdUsuarioPropietario) {
+        if (ModelState.IsValid) {
+            var t = tableroRepository.GetTablero(id);
+            if (t != null) {
+                if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+                if (isAdmin()) {
                     Tablero tablero = new Tablero(viewTableroUpdate);
                     tableroRepository.UpdateTablero(id,tablero);
+                } else {
+                    if (HttpContext.Session.GetInt32("Id") == t.IdUsuarioPropietario) {
+                        Tablero tablero = new Tablero(viewTableroUpdate);
+                        tableroRepository.UpdateTablero(id,tablero);
+                    }
                 }
             }
+            return RedirectToAction("Index");
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("UpdateTablero");
     }
 
     public IActionResult DeleteTablero(int id) {

@@ -38,12 +38,15 @@ public class UsuarioController : Controller
     
     [HttpPost]
     public IActionResult AddUsuario(ViewUsuarioAdd viewUsuarioAdd) {
-        if (isAdmin()) {
-            var usuario = new Usuario(viewUsuarioAdd);
-            usuarioRepository.AddUsuario(usuario);
-            return RedirectToAction("Index");
+        if (ModelState.IsValid) {     
+            if (isAdmin()) {
+                var usuario = new Usuario(viewUsuarioAdd);
+                usuarioRepository.AddUsuario(usuario);
+                return RedirectToAction("Index");
+            }
+            return RedirectToRoute(new {controller = "Login", action = "Index"});
         }
-        return RedirectToRoute(new {controller = "Login", action = "Index"});
+        return RedirectToAction("AddUsuario");
     }
 
     [HttpGet]
@@ -64,18 +67,21 @@ public class UsuarioController : Controller
 
     [HttpPost]
     public IActionResult UpdateUsuario(int id, ViewUsuarioUpdate viewUsuarioUpdate) {
-        if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-        if (isAdmin()) {
-            var usuario = new Usuario(viewUsuarioUpdate);
-            usuarioRepository.UpdateUsuario(id,usuario);
-        } else {
-            if (HttpContext.Session.GetInt32("Id") == id) {
-                viewUsuarioUpdate.Rol = "Operador"; //triquiñuela porque me llega el rol en null
+        if (ModelState.IsValid) {
+            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+            if (isAdmin()) {
                 var usuario = new Usuario(viewUsuarioUpdate);
                 usuarioRepository.UpdateUsuario(id,usuario);
+            } else {
+                if (HttpContext.Session.GetInt32("Id") == id) {
+                    viewUsuarioUpdate.Rol = "Operador"; //triquiñuela porque me llega el rol en null
+                    var usuario = new Usuario(viewUsuarioUpdate);
+                    usuarioRepository.UpdateUsuario(id,usuario);
+                }
             }
+            return RedirectToAction("Index");
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("UpdateUsuario");
     }
 
     public IActionResult DeleteUsuario(int id) {
