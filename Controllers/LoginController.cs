@@ -21,13 +21,22 @@ public class LoginController : Controller
     }
     public IActionResult Login(UsuarioLogin usuarioLogin)
     {
-        if (ModelState.IsValid) {
-            var usuario = _usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
-            if (usuario == null) return RedirectToAction("Index");
-            LogearUsuario(usuario);
-            return RedirectToRoute(new {controller="Home", action="Index"});
+        try {
+            if (ModelState.IsValid) {
+                var usuario = _usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
+                if (usuario == null) {
+                    _logger.LogWarning("Intento de acceso invalido - Usuario:" + usuarioLogin.Usuario + "Clave ingresada: " + usuarioLogin.Contrasenia);
+                    return RedirectToAction("Index");
+                }
+                _logger.LogInformation("El usuario" + usuarioLogin.Usuario + "ingreso correctamente");
+                LogearUsuario(usuario);
+                return RedirectToRoute(new {controller="Home", action="Index"});
+            }
+            return RedirectToAction("Index");
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
-        return RedirectToAction("Index");
     }
 
     private void LogearUsuario(Usuario usuario) {

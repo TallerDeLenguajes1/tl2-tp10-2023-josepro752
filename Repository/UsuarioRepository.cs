@@ -7,7 +7,13 @@ public class UsuarioRepository : IUsuarioRepository{
     private string[] roles = {
         "Administrador","Operador"
     };
-    private string cadenaDeConexion = "Data Source=DataBase/kanban.db;Cache=Shared";
+    private string cadenaDeConexion;
+
+    public UsuarioRepository(string cadenaDeConexion)
+    {
+        this.cadenaDeConexion = cadenaDeConexion;
+    }
+
     public void AddUsuario(Usuario usuario) {
         var query = @"INSERT INTO Usuario (nombre_de_usuario,rol,contrasenia) VALUES (@nombre_de_usuario,@rol,@contrasenia);"; // Esto se ejecutara en la base de datos
         using (SQLiteConnection connection = new SQLiteConnection(cadenaDeConexion)){ // Me crea la conexion
@@ -60,10 +66,16 @@ public class UsuarioRepository : IUsuarioRepository{
                 connection.Close();
             }
         }
+        if (usuarios==null) {
+            throw new Exception("Usuarios no creados.");
+        }
         return usuarios;
     }
     public Usuario GetUsuario(int id) {
         Usuario usuario = GetAllUsuarios().FirstOrDefault(usuario => usuario.Id==id);
+        if (usuario==null) {
+            throw new Exception("Usuario no creado.");
+        }
         return usuario;
     }
     public void DeleteUsuario(int id) {

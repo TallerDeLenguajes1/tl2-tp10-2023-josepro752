@@ -3,7 +3,13 @@ using System.Data.SQLite;
 namespace tl2_tp10_2023_josepro752.Models;
 
 public class TableroRepository : ITableroRepository {
-    private string cadenaDeConexion = "Data Source=DataBase/kanban.db;Cache=Shared";
+    private string cadenaDeConexion;
+
+    public TableroRepository(string cadenaDeConexion)
+    {
+        this.cadenaDeConexion = cadenaDeConexion;
+    }
+
     public void AddTablero(Tablero tablero) {
         var query = @"INSERT INTO Tablero (id_usuario_propietario,nombre,descripcion) VALUES (@id_usuario_propietario,@nombre,@descripcion);"; // Esto se ejecutara en la base de datos
         using (SQLiteConnection connection = new SQLiteConnection(cadenaDeConexion)){ // Me crea la conexion
@@ -31,6 +37,9 @@ public class TableroRepository : ITableroRepository {
     }
     public Tablero GetTablero(int id) {
         var tablero = GetAllTableros().FirstOrDefault(tablero => tablero.Id == id);
+        if (tablero==null) {
+            throw new Exception("Tablero no creado.");
+        }
         return tablero;
     }
     public List<Tablero> GetAllTableros() {
@@ -52,10 +61,16 @@ public class TableroRepository : ITableroRepository {
                 connection.Close();
             }
         }
+        if (tableros==null) {
+            throw new Exception("Tableros no creados.");
+        }
         return tableros;
     }
     public List<Tablero> GetAllTablerosForUsuario(int idUsuario) {
         var tableros = GetAllTableros().FindAll(tablero => tablero.IdUsuarioPropietario == idUsuario);
+        if (tableros==null) {
+            throw new Exception("Tableros no creados.");
+        }
         return tableros;
     }
     public void DeleteTablero(int id) {

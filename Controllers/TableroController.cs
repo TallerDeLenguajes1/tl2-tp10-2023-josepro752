@@ -19,87 +19,117 @@ public class TableroController : Controller
 
     public IActionResult Index()
     {
-        if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-        if (isAdmin()) {
-            ViewTableroListar tableros = new ViewTableroListar(_tableroRepository.GetAllTableros(),_usuarioRepository.GetAllUsuarios());
-            return View(tableros);
-        } else {
-            ViewTableroListar tableros = new ViewTableroListar(_tableroRepository.GetAllTableros().FindAll(t => t.IdUsuarioPropietario == HttpContext.Session.GetInt32("Id")),_usuarioRepository.GetAllUsuarios());
-            return View("IndexOperador",tableros);
+        try {
+            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+            if (isAdmin()) {
+                ViewTableroListar tableros = new ViewTableroListar(_tableroRepository.GetAllTableros(),_usuarioRepository.GetAllUsuarios());
+                return View(tableros);
+            } else {
+                ViewTableroListar tableros = new ViewTableroListar(_tableroRepository.GetAllTableros().FindAll(t => t.IdUsuarioPropietario == HttpContext.Session.GetInt32("Id")),_usuarioRepository.GetAllUsuarios());
+                return View("IndexOperador",tableros);
+            }
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
     }
 
     [HttpGet]
     public IActionResult AddTablero() {
-        if (isAdmin()) {
-            return View(new ViewTableroAdd (_usuarioRepository.GetAllUsuarios()));
+        try {
+            if (isAdmin()) {
+                return View(new ViewTableroAdd (_usuarioRepository.GetAllUsuarios()));
+            }
+            return RedirectToRoute(new {controller = "Home", action = "Index"});
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
-        return RedirectToRoute(new {controller = "Login", action = "Index"});
     }
 
     [HttpPost]
     public IActionResult AddTablero(ViewTableroAdd viewTableroAdd) {
-        if (ModelState.IsValid) {
-            if (isAdmin()) {
-                var tablero =  new Tablero(viewTableroAdd);
-                _tableroRepository.AddTablero(tablero);
-                return RedirectToAction("Index");
+        try {
+            if (ModelState.IsValid) {
+                if (isAdmin()) {
+                    var tablero =  new Tablero(viewTableroAdd);
+                    _tableroRepository.AddTablero(tablero);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToRoute(new {controller = "Login", action = "Index"});
             }
-            return RedirectToRoute(new {controller = "Login", action = "Index"});
+            return RedirectToAction("AddTablero");
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
-        return RedirectToAction("AddTablero");
     }
 
     [HttpGet]
     public IActionResult UpdateTablero(int id) {
-        var tablero = _tableroRepository.GetTablero(id);
-        if (tablero != null) {
-            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-            if (isAdmin()) {
-                ViewTableroUpdate viewUsuarioUpdate = new ViewTableroUpdate(_tableroRepository.GetTablero(id),_usuarioRepository.GetAllUsuarios());
-                return View(viewUsuarioUpdate);
-            } else {
-                if (HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario) {
+        try {
+            var tablero = _tableroRepository.GetTablero(id);
+            if (tablero != null) {
+                if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+                if (isAdmin()) {
                     ViewTableroUpdate viewUsuarioUpdate = new ViewTableroUpdate(_tableroRepository.GetTablero(id),_usuarioRepository.GetAllUsuarios());
-                    return View("UpdateTableroOperador",viewUsuarioUpdate);
+                    return View(viewUsuarioUpdate);
+                } else {
+                    if (HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario) {
+                        ViewTableroUpdate viewUsuarioUpdate = new ViewTableroUpdate(_tableroRepository.GetTablero(id),_usuarioRepository.GetAllUsuarios());
+                        return View("UpdateTableroOperador",viewUsuarioUpdate);
+                    }
                 }
-            }
-        }                   
-        return RedirectToAction("Index");
+            }                   
+            return RedirectToAction("Index");
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
+        }
     }
 
     [HttpPost]
     public IActionResult UpdateTablero(int id, ViewTableroUpdate viewTableroUpdate) {
-        if (ModelState.IsValid) {
-            var t = _tableroRepository.GetTablero(id);
-            if (t != null) {
-                if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-                if (isAdmin()) {
-                    Tablero tablero = new Tablero(viewTableroUpdate);
-                    _tableroRepository.UpdateTablero(id,tablero);
-                } else {
-                    if (HttpContext.Session.GetInt32("Id") == t.IdUsuarioPropietario) {
+        try {
+            if (ModelState.IsValid) {
+                var t = _tableroRepository.GetTablero(id);
+                if (t != null) {
+                    if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+                    if (isAdmin()) {
                         Tablero tablero = new Tablero(viewTableroUpdate);
                         _tableroRepository.UpdateTablero(id,tablero);
+                    } else {
+                        if (HttpContext.Session.GetInt32("Id") == t.IdUsuarioPropietario) {
+                            Tablero tablero = new Tablero(viewTableroUpdate);
+                            _tableroRepository.UpdateTablero(id,tablero);
+                        }
                     }
                 }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("UpdateTablero");
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
-        return RedirectToAction("UpdateTablero");
     }
 
     public IActionResult DeleteTablero(int id) {
-        if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
-        if (isAdmin()) {
-            _tableroRepository.DeleteTablero(id);
-        } else {
-            var tablero = _tableroRepository.GetTablero(id);
-            if (tablero != null && HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario) {
+        try {
+            if (HttpContext.Session.GetString("Rol") == null) return RedirectToRoute(new {controller = "Login", action = "Index"});
+            if (isAdmin()) {
                 _tableroRepository.DeleteTablero(id);
+            } else {
+                var tablero = _tableroRepository.GetTablero(id);
+                if (tablero != null && HttpContext.Session.GetInt32("Id") == tablero.IdUsuarioPropietario) {
+                    _tableroRepository.DeleteTablero(id);
+                }
             }
+            return RedirectToAction("Index");
+        } catch (Exception ex) {
+            _logger.LogError(ex.ToString());
+            return RedirectToAction("Error");
         }
-        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()

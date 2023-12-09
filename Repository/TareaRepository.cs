@@ -3,7 +3,13 @@ using System.Data.SQLite;
 namespace tl2_tp10_2023_josepro752.Models;
 
 public class TareaRepository : ITareaRepository{
-    private string cadenaDeConexion = "Data Source=DataBase/kanban.db;Cache=Shared";
+    private string cadenaDeConexion;
+
+    public TareaRepository(string cadenaDeConexion)
+    {
+        this.cadenaDeConexion = cadenaDeConexion;
+    }
+
     public void AddTarea(Tarea tarea) {
         var query = @"INSERT INTO Tarea (id_tablero,nombre,estado,descripcion,color,id_usuario_asignado) VALUES (@id_tablero,@nombre,@estado,@descripcion,@color,@id_usuario_asignado);"; // Esto se ejecutara en la base de datos
         using (SQLiteConnection connection = new SQLiteConnection(cadenaDeConexion)){ // Me crea la conexion
@@ -37,6 +43,9 @@ public class TareaRepository : ITareaRepository{
     }
     public Tarea GetTarea(int id) {
         var tarea = GetAllTareas().FirstOrDefault(tarea => tarea.Id == id);
+        if (tarea==null) {
+            throw new Exception("Tarea no creada.");
+        }
         return tarea;
     }
     public List<Tarea> GetAllTareas() { // Extra
@@ -65,14 +74,23 @@ public class TareaRepository : ITareaRepository{
                 connection.Close();
             }
         }
+        if (tareas==null) {
+            throw new Exception("Tareas no creadas.");
+        }
         return tareas;
     } // Extra
     public List<Tarea> GetAllTareasForUsuario(int idUsuario){
         var tareas = GetAllTareas().FindAll(tarea => tarea.IdUsuarioAsignado == idUsuario);
+        if (tareas==null) {
+            throw new Exception("Tareas no creadas.");
+        }
         return tareas;
     }
     public List<Tarea> GetAllTareasForTablero(int idTablero){
         var tareas = GetAllTareas().FindAll(tarea => tarea.IdTablero == idTablero);
+        if (tareas==null) {
+            throw new Exception("Tareas no creadas.");
+        }
         return tareas;
     }
     public void DeleteTarea(int id){
