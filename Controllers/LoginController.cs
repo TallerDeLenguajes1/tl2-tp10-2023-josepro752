@@ -7,11 +7,12 @@ namespace tl2_tp10_2023_josepro752.Controllers;
 public class LoginController : Controller
 {
     private readonly ILogger<LoginController> _logger;
-    private IUsuarioRepository usuarioRepository;
-    public LoginController(ILogger<LoginController> logger)
+    private IUsuarioRepository _usuarioRepository;
+
+    public LoginController(ILogger<LoginController> logger, IUsuarioRepository usuarioRepository)
     {
         _logger = logger;
-        usuarioRepository = new UsuarioRepository();
+        _usuarioRepository = usuarioRepository;
     }
 
     public IActionResult Index()
@@ -21,7 +22,7 @@ public class LoginController : Controller
     public IActionResult Login(UsuarioLogin usuarioLogin)
     {
         if (ModelState.IsValid) {
-            var usuario = usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
+            var usuario = _usuarioRepository.GetAllUsuarios().FirstOrDefault(u => u.NombreDeUsuario == usuarioLogin.Usuario && u.Contrasenia == usuarioLogin.Contrasenia);
             if (usuario == null) return RedirectToAction("Index");
             LogearUsuario(usuario);
             return RedirectToRoute(new {controller="Home", action="Index"});

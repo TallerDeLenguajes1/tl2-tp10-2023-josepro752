@@ -1,7 +1,14 @@
+using tl2_tp10_2023_josepro752.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IUsuarioRepository,UsuarioRepository>();
+builder.Services.AddScoped<ITareaRepository,TareaRepository>();
+builder.Services.AddScoped<ITableroRepository,TableroRepository>();
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
